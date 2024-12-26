@@ -295,7 +295,6 @@ export const UploadWrapper = styled.div`
   }
 `;
 
-
 // Styled Component for the Main Container
 export const FooterContainer = styled.footer`
   display: flex;
@@ -366,6 +365,165 @@ export const FooterContainer = styled.footer`
     svg {
       color: #333;
       font-size: 16px;
+    }
+  }
+`;
+
+export const ResultWrapper = styled.div`
+  width: 100%;
+  height: 85vh;
+  padding: 0 10vw;
+
+  .result-wrapper {
+    width: 100%;
+    height: 75vh;
+    background-color: #ededed;
+    box-shadow: 0px 2px 2px 0px #00000014;
+    border-radius: 25px;
+  }
+
+  .result-wrapper .top {
+    width: 100%;
+    height: 80%;
+    display: flex;
+  }
+
+  .result-wrapper .top .tleft {
+    width: 50%;
+    height: 100%;
+    padding: 5vh;
+  }
+
+  .result-wrapper .top .tleft img {
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
+    border-radius: 15px;
+    border: 2px solid #bababa;
+  }
+
+  .result-wrapper .top .tright {
+    width: 50%;
+    height: 100%;
+    padding: 5vh;
+  }
+
+  .result-wrapper .top .tright img {
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
+    border-radius: 15px;
+    border: 2px solid #bababa;
+  }
+
+  .result-wrapper .bottom {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 20px;
+    padding-right: 5vh;
+  }
+
+  .result-wrapper .bottom .try-button {
+    border: 2px solid #7d48fe;
+    border-radius: 50px;
+    height: 8vh;
+    padding: 0 10px;
+    color: #8448fd;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .result-wrapper .bottom .try-button:hover {
+    transform: scale(1.1);
+  }
+
+  .result-wrapper .bottom .download-button {
+    border-radius: 50px;
+    height: 8vh;
+    padding: 0 10px;
+    color: white;
+    background: linear-gradient(90deg, #7648ff 0%, #d34af8 100%);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .result-wrapper .bottom .download-button:hover {
+    transform: scale(1.1);
+  }
+`;
+
+export const PricingWrapper = styled.div`
+  width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  .plan-button {
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .plan-button button {
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #e0e0e0;
+    border-radius: 1px solid #e0e0e0;
+  }
+
+  .plan-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .plan-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .plan-title {
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  .plan-description {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+  }
+
+  .plan-price {
+    font-size: 2em;
+    color: #000;
+    margin-bottom: 10px;
+  }
+
+  .plan-credits {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 20px;
+  }
+
+  .plan-card button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+
+    &:hover {
+      background-color: #333;
     }
   }
 `;
