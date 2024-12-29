@@ -3,6 +3,8 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
+import UserRouter from "./routes/user.routes.js";
+import DatabaseConnection from "./config/db.js";
 
 let corsOptions = {
   origin: "http://localhost:8000",
@@ -20,10 +22,13 @@ app.use(
   })
 );
 
+app.use("/api/user", UserRouter);
+
 app.get("/", (req, res) => {
   res.send("hello");
 });
 
 app.listen(process.env.PORT, () => {
   console.log("SErver runnig");
+  DatabaseConnection()
 });
