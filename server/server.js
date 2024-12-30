@@ -6,11 +6,11 @@ import cors from "cors";
 import UserRouter from "./routes/user.routes.js";
 import DatabaseConnection from "./config/db.js";
 
-let corsOptions = {
-  origin: " http://localhost:5173",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  methods: ["GET", "PUT", "POST", "DELETE", "HEAD", "METHOD", "UPDATE"]
-};
+// let corsOptions = {
+//   // origin: " http://localhost:5173",
+//   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+//   methods: ["GET", "PUT", "POST", "DELETE", "HEAD", "METHOD", "UPDATE"]
+// };
 
 const app = express();
 

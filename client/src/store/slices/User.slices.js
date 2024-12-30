@@ -16,8 +16,8 @@ export const UserThunk = createAsyncThunk("UserThunk", async (userdata) => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Clerk-Signature": import.meta.env.CLERK_SECRET
-        }
+          "Clerk-Signature": `${import.meta.env.CLERK_SECRET}`,
+        },
       }
     );
     return response;
