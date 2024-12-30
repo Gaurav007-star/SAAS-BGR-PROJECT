@@ -5,7 +5,7 @@ import { useClerk, useUser, UserButton } from "@clerk/clerk-react";
 
 export const Navbar = () => {
   const { openSignIn } = useClerk();
-  const { isSignedIn, user } = useUser();
+  const { isSignedIn } = useUser();
 
   return (
     <Navwarpper>

@@ -4,11 +4,11 @@ import UserModel from "../models/user.model.js";
 // https://localhost:4000/api/user/webhooks
 export const clerkWebhook = async (req, res) => {
   try {
-    console.log("WEBHOOKSSSSSSSS");
+    console.log("WEBHOOKSSSSSSSS",req.body);
 
     const whook = new Webhook(process.env.CLERK_SECRET);
 
-    await whook.verify(JSON.stringify(req.body), {
+    whook.verify(JSON.stringify(req.body), {
       //
       "svix-id": req.headers["svix-id"],
       "svix-signature": req.headers["svix-signature"],
