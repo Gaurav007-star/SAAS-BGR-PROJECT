@@ -4,18 +4,14 @@ import UserModel from "../models/user.model.js";
 // https://localhost:4000/api/user/webhooks
 export const clerkWebhook = async (req, res) => {
   try {
-    console.log("WEBHOOKSSSSSSSS",req.body);
-
     const whook = new Webhook(process.env.CLERK_SECRET);
 
-    whook.verify(JSON.stringify(req.body), {
+    await whook.verify(JSON.stringify(req.body), {
       //
       "svix-id": req.headers["svix-id"],
       "svix-signature": req.headers["svix-signature"],
       "svix-timestamp": req.headers["svix-timestamp"]
     });
-
-    // console.log("RESPONSE DATA : ", responseData);
 
     const { data, type } = req.body;
 
@@ -29,7 +25,7 @@ export const clerkWebhook = async (req, res) => {
           lastname: data.last_name
         });
 
-        res.json({});
+        res.json({createUser});
         break;
 
       case "user.updated":
