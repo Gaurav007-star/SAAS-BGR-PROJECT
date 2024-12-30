@@ -4,6 +4,8 @@ import UserModel from "../models/user.model.js";
 // https://localhost:4000/api/user/webhooks
 export const clerkWebhook = async (req, res) => {
   try {
+    console.log(req.body);
+    
     const whook = new Webhook(process.env.CLERK_SECRET);
 
     await whook.verify(JSON.stringify(req.body), {
