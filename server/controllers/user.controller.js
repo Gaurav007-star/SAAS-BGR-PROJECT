@@ -8,16 +8,16 @@ export const clerkWebhook = async (req, res) => {
 
     const whook = new Webhook(process.env.CLERK_SECRET);
 
-    const responseData = await whook.verify(JSON.stringify(req.body), {
+    await whook.verify(JSON.stringify(req.body), {
       //
       "svix-id": req.headers["svix-id"],
       "svix-signature": req.headers["svix-signature"],
       "svix-timestamp": req.headers["svix-timestamp"]
     });
 
-    console.log("RESPONSE DATA : ", responseData);
+    // console.log("RESPONSE DATA : ", responseData);
 
-    const { data, type } = responseData;
+    const { data, type } = req.body;
 
     switch (type) {
       case "user.created":
