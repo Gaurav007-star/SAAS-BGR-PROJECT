@@ -3,18 +3,18 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
+
 import UserRouter from "./routes/user.routes.js";
 import DatabaseConnection from "./config/db.js";
 
 // let corsOptions = {
-//   // origin: " http://localhost:5173",
+//   origin: " http://localhost:5173",
 //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-//   methods: ["GET", "PUT", "POST", "DELETE", "HEAD", "METHOD", "UPDATE"]
 // };
 
 const app = express();
-
 app.use(cors());
+
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -30,5 +30,5 @@ app.get("/", (req, res) => {
 
 app.listen(process.env.PORT, () => {
   console.log("SErver runnig");
-  DatabaseConnection()
+  DatabaseConnection();
 });

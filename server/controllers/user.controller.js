@@ -2,64 +2,72 @@ import { Webhook } from "svix";
 import UserModel from "../models/user.model.js";
 
 // https://localhost:4000/api/user/webhooks
-export const clerkWebhook = async (req, res) => {
-  try {
-    console.log(req.body);
-    
-    const whook = new Webhook(process.env.CLERK_SECRET);
 
-    await whook.verify(JSON.stringify(req.body), {
-      //
-      "svix-id": req.headers["svix-id"],
-      "svix-signature": req.headers["svix-signature"],
-      "svix-timestamp": req.headers["svix-timestamp"]
+export const register = async (req, res) => {
+  console.log(req.body);
+  const { clerkId, email, photo, firstname, lastname } = req.body;
+  try {
+    const createUser = await UserModel.create({
+      clerkId: clerkId,
+      email: email,
+      photo: photo,
+      firstname: firstname,
+      lastname: lastname
     });
 
-    const { data, type } = req.body;
-
-    switch (type) {
-      case "user.created":
-        const createUser = await UserModel.create({
-          clerkId: data.id,
-          email: data.email_addresses[0].email_address,
-          photo: data.image_url,
-          firstname: data.first_name,
-          lastname: data.last_name
-        });
-
-        res.json({createUser});
-        break;
-
-      case "user.updated":
-        const updateUser = await UserModel.updateOne(
-          {
-            _id: data.id
-          },
-          {
-            $set: {
-              email: data.email_addresses[0].email_address,
-              photo: data.image_url,
-              firstname: data.first_name,
-              lastname: data.last_name
-            }
-          }
-        );
-
-        res.json({});
-        break;
-
-      case "user.deleted":
-        const userDeleted = UserModel.deleteOne({
-          _id: data.id
-        });
-        res.json({});
-        break;
-
-      default:
-        break;
-    }
+    res.json({ createUser });
   } catch (error) {
     console.log(error.message);
+    res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+export const getUser = async(req,res)=>{
+  try {
+    const id = req.params.id
+    console.log("get user data",id);
+    
+    const user = await UserModel.findOne({clerkId
+      :id})
+
+    if(!user){
+      return res.status(400).json({
+        success:false,
+        message:"User not found"
+      })
+    }
+
+    return res.status(200).json({
+      success:true,
+      user
+    })
+
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+}
+
+export const update = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    console.log("update coming data", req.body);
+    await UserModel.updateOne(
+      {
+        clerkId: userId
+      },
+      {
+        $set: {}
+      }
+    );
+  } catch (error) {
+    console.log(error);
+
     res.status(400).json({
       success: false,
       message: error.message
