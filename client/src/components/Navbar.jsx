@@ -2,13 +2,8 @@
 import { NavLink } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { Navwarpper } from "../css_sheets/colorSheets.css";
-import { useDispatch } from "react-redux";
-import { UserThunk, UserUpdateThunk } from "../store/slices/User.slices";
-
 
 export const Navbar = () => {
-
-  const dispatch = useDispatch()
 
   return (
     <Navwarpper>
